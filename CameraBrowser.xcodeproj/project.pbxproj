@@ -15,6 +15,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		DAE1B5C42BF21F6A0038F801 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAE1B5C32BF21F6A0038F801 /* InfoPlist.strings */; };
 		DAE1B5C72BF21F750038F801 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE1B5C62BF21F750038F801 /* MainMenu.xib */; };
+		DAE1B5CB2BF223680038F801 /* ICDevice+CameraBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		DAE1B5C22BF21F6A0038F801 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DAE1B5C52BF21F750038F801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		DAE1B5C82BF21F750038F801 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
+		DAE1B5C92BF223680038F801 /* ICDevice+CameraBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ICDevice+CameraBrowser.h"; sourceTree = "<group>"; };
+		DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ICDevice+CameraBrowser.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				06FB08390D9AF7470081CC27 /* AppController.h */,
 				06FB083A0D9AF7470081CC27 /* AppController.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				DAE1B5C92BF223680038F801 /* ICDevice+CameraBrowser.h */,
+				DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				06FB083B0D9AF7470081CC27 /* AppController.m in Sources */,
 				06569B910DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m in Sources */,
+				DAE1B5CB2BF223680038F801 /* ICDevice+CameraBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
