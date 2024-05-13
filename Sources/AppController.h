@@ -52,19 +52,11 @@
 
 //------------------------------------------------------------------------------------------------------------------------------
 
-@interface AppController : NSObject <ICDeviceBrowserDelegate, ICCameraDeviceDelegate>
+@interface AppController : NSObject <
+    ICDeviceBrowserDelegate,
+    ICCameraDeviceDelegate,
+    NSApplicationDelegate>
 {
-    ICDeviceBrowser*              mDeviceBrowser;
-    NSMutableArray*               mCameras;
-    IBOutlet  NSWindow*           mWindow;
-    IBOutlet  NSTableView*        mCamerasTableView;
-    IBOutlet  NSArrayController*  mCamerasController;
-    IBOutlet  NSTableView*        mCameraContentTableView;
-    IBOutlet  NSArrayController*  mMediaFilesController;
 }
-
-@property(retain)   NSMutableArray* cameras;
-@property(readonly) BOOL            canDelete;
-@property(readonly) BOOL            canDownload;
 
 @end

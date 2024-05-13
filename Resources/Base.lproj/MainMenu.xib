@@ -11,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="CameraBrowser" id="56">
@@ -137,10 +137,11 @@
         </menu>
         <customObject id="205" userLabel="AppController" customClass="AppController">
             <connections>
-                <outlet property="mCameraContentTableView" destination="482" id="511"/>
-                <outlet property="mCamerasController" destination="439" id="454"/>
-                <outlet property="mCamerasTableView" destination="443" id="453"/>
-                <outlet property="mMediaFilesController" destination="502" id="510"/>
+                <outlet property="cameraContentTableView" destination="482" id="511"/>
+                <outlet property="camerasController" destination="439" id="454"/>
+                <outlet property="camerasTableView" destination="443" id="453"/>
+                <outlet property="mediaFilesController" destination="502" id="510"/>
+                <outlet property="window" destination="21" id="WN9-7n-2sq"/>
             </connections>
         </customObject>
         <window title="Camera Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="21" userLabel="Window">
@@ -161,7 +162,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="473"/>
                             <binding destination="439" name="target" keyPath="selection" id="472">
                                 <dictionary key="options">
                                     <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
@@ -171,6 +171,7 @@
                                     <string key="NSSelectorName">requestCloseSession</string>
                                 </dictionary>
                             </binding>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="473"/>
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="466">
@@ -181,11 +182,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="471">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                </dictionary>
-                            </binding>
                             <binding destination="439" name="target" keyPath="selection" id="468">
                                 <dictionary key="options">
                                     <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
@@ -193,6 +189,11 @@
                                     <integer key="NSConditionallySetsHidden" value="0"/>
                                     <integer key="NSRaisesForNotApplicableKeys" value="1"/>
                                     <string key="NSSelectorName">requestOpenSession</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="471">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
                                 </dictionary>
                             </binding>
                         </connections>
@@ -226,7 +227,7 @@
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="50" id="443">
                                                         <rect key="frame" x="0.0" y="0.0" width="233" height="435"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -290,19 +291,19 @@
                                 <tabViewItems>
                                     <tabViewItem label="List View" identifier="2" id="477">
                                         <view key="view" id="478">
-                                            <rect key="frame" x="10" y="25" width="899" height="448"/>
+                                            <rect key="frame" x="10" y="29" width="899" height="444"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView focusRingType="none" fixedFrame="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="479">
-                                                    <rect key="frame" x="-1" y="-1" width="901" height="448"/>
+                                                    <rect key="frame" x="-1" y="-1" width="901" height="444"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="CbR-IR-c72">
-                                                        <rect key="frame" x="1" y="1" width="884" height="446"/>
+                                                        <rect key="frame" x="1" y="1" width="884" height="442"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="50" headerView="483" id="482">
-                                                                <rect key="frame" x="0.0" y="0.0" width="884" height="418"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="884" height="414"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -412,7 +413,7 @@
                                                                         </textFieldCell>
                                                                         <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                                                     </tableColumn>
-                                                                    <tableColumn identifier="Model" editable="NO" width="274" minWidth="10" maxWidth="500" id="498">
+                                                                    <tableColumn identifier="Model" editable="NO" width="245" minWidth="10" maxWidth="500" id="498">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Model">
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -433,7 +434,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="480">
-                                                        <rect key="frame" x="885" y="29" width="15" height="418"/>
+                                                        <rect key="frame" x="885" y="29" width="15" height="414"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <tableHeaderView key="headerView" wantsLayer="YES" focusRingType="none" id="483">
@@ -453,17 +454,17 @@
                                                     <rect key="frame" x="-1" y="-1" width="891" height="435"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="DbB-Ai-Lte">
-                                                        <rect key="frame" x="1" y="29" width="889" height="405"/>
+                                                        <rect key="frame" x="1" y="1" width="889" height="433"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="430" indentationPerLevel="13" autoresizesOutlineColumn="YES" outlineTableColumn="352" id="350">
                                                                 <rect key="frame" x="0.0" y="0.0" width="889" height="405"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                 <tableColumns>
-                                                                    <tableColumn width="877" minWidth="16" maxWidth="1000" id="352">
+                                                                    <tableColumn width="848" minWidth="16" maxWidth="1000" id="352">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
@@ -518,15 +519,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="439" name="enabled2" keyPath="selection.canTakePicture" previousBinding="534" id="536">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                    <integer key="NSNullPlaceholder" value="-1"/>
-                                </dictionary>
-                            </binding>
-                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="534"/>
                             <binding destination="439" name="target" keyPath="selection" id="520">
                                 <dictionary key="options">
                                     <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
@@ -536,6 +528,15 @@
                                     <string key="NSSelectorName">requestTakePicture</string>
                                 </dictionary>
                             </binding>
+                            <binding destination="439" name="enabled2" keyPath="selection.canTakePicture" previousBinding="534" id="536">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="534"/>
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="521">
@@ -546,6 +547,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
+                            <binding destination="205" name="enabled" keyPath="canDelete" id="562"/>
                             <binding destination="502" name="argument" keyPath="selectedObjects" id="563">
                                 <dictionary key="options">
                                     <integer key="NSAllowsNullArgument" value="0"/>
@@ -556,7 +558,6 @@
                                     <null key="NSSelectorName"/>
                                 </dictionary>
                             </binding>
-                            <binding destination="205" name="enabled" keyPath="canDelete" id="562"/>
                             <binding destination="439" name="target" keyPath="selection" previousBinding="563" id="564">
                                 <dictionary key="options">
                                     <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
@@ -576,15 +577,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="439" name="enabled2" keyPath="selection.canSyncClock" previousBinding="542" id="544">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                    <integer key="NSNullPlaceholder" value="-1"/>
-                                </dictionary>
-                            </binding>
-                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="542"/>
                             <binding destination="439" name="target" keyPath="selection" id="539">
                                 <dictionary key="options">
                                     <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
@@ -594,6 +586,15 @@
                                     <string key="NSSelectorName">requestSyncClock</string>
                                 </dictionary>
                             </binding>
+                            <binding destination="439" name="enabled2" keyPath="selection.canSyncClock" previousBinding="542" id="544">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="542"/>
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="565">
@@ -604,6 +605,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
+                            <binding destination="205" name="enabled" keyPath="canDownload" id="572"/>
                             <binding destination="502" name="argument" keyPath="selectedObjects" id="576">
                                 <dictionary key="options">
                                     <integer key="NSAllowsNullArgument" value="0"/>
@@ -614,7 +616,6 @@
                                     <null key="NSSelectorName"/>
                                 </dictionary>
                             </binding>
-                            <binding destination="205" name="enabled" keyPath="canDownload" id="572"/>
                             <binding destination="205" name="target" keyPath="self" previousBinding="576" id="579">
                                 <dictionary key="options">
                                     <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
@@ -634,12 +635,12 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
+                            <binding destination="205" name="enabled" keyPath="canDownload" id="596"/>
                             <binding destination="502" name="argument" keyPath="selectedObjects" id="598">
                                 <dictionary key="options">
                                     <string key="NSSelectorName">readFiles:</string>
                                 </dictionary>
                             </binding>
-                            <binding destination="205" name="enabled" keyPath="canDownload" id="596"/>
                             <binding destination="205" name="target" keyPath="self" previousBinding="598" id="600">
                                 <dictionary key="options">
                                     <string key="NSSelectorName">readFiles:</string>

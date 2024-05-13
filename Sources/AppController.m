@@ -50,10 +50,25 @@
 #import "AppController.h"
 #import "CGImageRefToNSImageTransformer.h"
 
+@interface AppController ()
+
+@property(strong) IBOutlet NSWindow             *window;
+@property(strong) IBOutlet NSTableView          *camerasTableView;
+@property(strong) IBOutlet NSArrayController    *camerasController;
+@property(strong) IBOutlet NSTableView          *cameraContentTableView;
+@property(strong) IBOutlet NSArrayController    *mediaFilesController;
+
+
+@property(strong) NSMutableArray *cameras;
+@property(strong) ICDeviceBrowser *deviceBrowser;
+
+@property(readonly) BOOL canDelete;
+@property(readonly) BOOL canDownload;
+
+@end
+
 
 @implementation AppController
-
-@synthesize cameras = mCameras;
 
 //------------------------------------------------------------------------------------------------------------------- initialize
 
@@ -75,44 +90,42 @@
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processICLaunchParams:)
-                                                 name:@"ICLaunchParamsNotification" 
-                                               object:NULL];
+        selector:@selector(processICLaunchParams:)
+        name:@"ICLaunchParamsNotification"
+        object:NULL];
 
-    mCameras = [[NSMutableArray alloc] initWithCapacity:0];
-    [mCamerasController setSelectsInsertedObjects:NO];
+    self.cameras = [[NSMutableArray alloc] initWithCapacity:0];
+    [self.camerasController setSelectsInsertedObjects:NO];
 
-    [[mCameraContentTableView tableColumnWithIdentifier:@"Date"] bind:@"value" toObject:mMediaFilesController
+    [[self.cameraContentTableView tableColumnWithIdentifier:@"Date"] bind:@"value" toObject:self.mediaFilesController
         withKeyPath:@"arrangedObjects.metadataIfAvailable.{Exif}.DateTimeOriginal" options:nil];
-    [[mCameraContentTableView tableColumnWithIdentifier:@"Make"] bind:@"value" toObject:mMediaFilesController
+    [[self.cameraContentTableView tableColumnWithIdentifier:@"Make"] bind:@"value" toObject:self.mediaFilesController
         withKeyPath:@"arrangedObjects.metadataIfAvailable.{TIFF}.Make" options:nil];
-    [[mCameraContentTableView tableColumnWithIdentifier:@"Model"] bind:@"value" toObject:mMediaFilesController
+    [[self.cameraContentTableView tableColumnWithIdentifier:@"Model"] bind:@"value" toObject:self.mediaFilesController
         withKeyPath:@"arrangedObjects.metadataIfAvailable.{TIFF}.Model" options:nil];
 
-    [mMediaFilesController addObserver:self forKeyPath:@"selectedObjects" options:0 context:NULL];
+    [self.mediaFilesController addObserver:self forKeyPath:@"selectedObjects" options:0 context:NULL];
 
-    [mCamerasTableView setTarget:self];
-    [mCamerasTableView setAction:@selector(openCamera)];
+    [self.camerasTableView setTarget:self];
+    [self.camerasTableView setAction:@selector(openCamera)];
 
-    mDeviceBrowser = [[ICDeviceBrowser alloc] init];
-    mDeviceBrowser.delegate = self;
-    mDeviceBrowser.browsedDeviceTypeMask = ICDeviceLocationTypeMaskLocal|ICDeviceLocationTypeMaskRemote|ICDeviceTypeMaskCamera;
-    [mDeviceBrowser start];
+    self.deviceBrowser = [[ICDeviceBrowser alloc] init];
+    self.deviceBrowser.delegate = self;
+    self.deviceBrowser.browsedDeviceTypeMask =
+        ICDeviceLocationTypeMaskLocal|ICDeviceLocationTypeMaskRemote|ICDeviceTypeMaskCamera;
+    [self.deviceBrowser start];
 }
 
-//---------------------------------------------------------------------------------------------------- applicationWillTerminate:
-
-- (void)applicationWillTerminate:(NSNotification*)notification
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
-    mDeviceBrowser = nil;
-    mCameras = nil;
+    return YES;
 }
 
 //------------------------------------------------------------------------------ observeValueForKeyPath:ofObject:change:context:
 
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
 {
-    if ( [keyPath isEqualToString:@"selectedObjects"] && (object == mMediaFilesController) )
+    if ( [keyPath isEqualToString:@"selectedObjects"] && (object == self.mediaFilesController) )
     {
         [self willChangeValueForKey:@"canDelete"];
         [self willChangeValueForKey:@"canDownload"];
@@ -126,7 +139,7 @@
 - (BOOL)canDelete
 {
     BOOL      can           = NO;
-    NSArray*  selectedFiles = [mMediaFilesController selectedObjects];
+    NSArray*  selectedFiles = [self.mediaFilesController selectedObjects];
 
     if ( [selectedFiles count] )
     {
@@ -147,7 +160,7 @@
 
 - (BOOL)canDownload
 {
-    if ( [[mMediaFilesController selectedObjects] count] )
+    if ( [[self.mediaFilesController selectedObjects] count] )
     {
         return YES;
     }
@@ -160,7 +173,7 @@
 {
     ICCameraDevice* camera = NULL;
 
-    id selectedObjects = [mCamerasController selectedObjects];
+    id selectedObjects = [self.camerasController selectedObjects];
 
     if ( [selectedObjects count] )
     {
@@ -264,7 +277,7 @@
     if ( (addedDevice.type & ICDeviceTypeMaskCamera) == ICDeviceTypeCamera )
     {
         [self willChangeValueForKey:@"cameras"];
-        [mCameras addObject:addedDevice];
+        [self.cameras addObject:addedDevice];
         [self didChangeValueForKey:@"cameras"];
         addedDevice.delegate = self;
     }
@@ -275,7 +288,7 @@
 - (void)deviceBrowser:(ICDeviceBrowser*)browser didRemoveDevice:(ICDevice*)removedDevice moreGoing:(BOOL)moreGoing
 {
     NSLog( @"deviceBrowser:didRemoveDevice: \n%@\n", removedDevice );
-    [mCamerasController removeObject:removedDevice];
+    [self.camerasController removeObject:removedDevice];
 }
 
 //------------------------------------------------------------------------------------------- deviceBrowser:deviceDidChangeName:
@@ -299,7 +312,7 @@
 - (void)didRemoveDevice:(ICDevice*)removedDevice
 {
     NSLog( @"didRemoveDevice: \n%@\n", removedDevice );
-    [mCamerasController removeObject:removedDevice];
+    [self.camerasController removeObject:removedDevice];
 }
 
 //---------------------------------------------------------------------------------------------- device:didOpenSessionWithError:
@@ -361,7 +374,7 @@
                   @"OK", 
                   NULL, 
                   NULL, 
-                  mWindow, 
+                      self.window, 
                   NULL, 
                   NULL, 
                   NULL, 
