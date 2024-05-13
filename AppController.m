@@ -61,48 +61,61 @@
 @end
 
 @implementation ICDevice(CameraBrowserExtension)
+
 - (BOOL)canTakePicture
 {
     if ( [self.capabilities containsObject:ICCameraDeviceCanTakePicture] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
+
 - (BOOL)canDeleteOneFile
 {
     if ( [self.capabilities containsObject:ICCameraDeviceCanDeleteOneFile] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
+
 - (BOOL)canDeleteAllFiles
 {
     if ( [self.capabilities containsObject:ICCameraDeviceCanDeleteAllFiles] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
+
 - (BOOL)canSyncClock
 {
     if ( [self.capabilities containsObject:ICCameraDeviceCanSyncClock] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
+
 - (BOOL)canReceiveFile
 {
     if ( [self.capabilities containsObject:ICCameraDeviceCanReceiveFile] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
+
 - (BOOL)canEject
 {
     if ( [self.capabilities containsObject:ICDeviceCanEjectOrDisconnect] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
+
 @end
 
 //----------------------------------------------------------------------------------------------- CGImageRefToNSImageTransformer
@@ -121,31 +134,10 @@
     if ( item )
     {
         NSImage*  newImage  = nil;
-        
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
         newImage = [[[NSImage alloc] initWithCGImage:(CGImageRef)item size:NSZeroSize] autorelease];
-#else
-        NSRect        imageRect     = NSMakeRect(0.0, 0.0, 0.0, 0.0);
-        CGContextRef  imageContext  = nil;
-        
-        // Get the image dimensions.
-        imageRect.size.height = CGImageGetHeight( (CGImageRef)item );
-        imageRect.size.width = CGImageGetWidth( (CGImageRef)item );
-     
-        // Create a new image to receive the Quartz image data.
-        newImage = [[[NSImage alloc] initWithSize:imageRect.size] autorelease];
-        [newImage lockFocus];
-     
-        // Get the Quartz context and draw.
-        imageContext = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
-        CGContextDrawImage( imageContext, *(CGRect*)&imageRect, (CGImageRef)item );
-        [newImage unlockFocus];
-#endif
-        
         return newImage;
     }
-    else
-        return nil;
+    return nil;
 }
 @end
 
@@ -178,19 +170,22 @@
                                              selector:@selector(processICLaunchParams:)
                                                  name:@"ICLaunchParamsNotification" 
                                                object:NULL];
-    
+
     mCameras = [[NSMutableArray alloc] initWithCapacity:0];
     [mCamerasController setSelectsInsertedObjects:NO];
-    
-    [[mCameraContentTableView tableColumnWithIdentifier:@"Date"] bind:@"value" toObject:mMediaFilesController withKeyPath:@"arrangedObjects.metadataIfAvailable.{Exif}.DateTimeOriginal" options:nil];
-    [[mCameraContentTableView tableColumnWithIdentifier:@"Make"] bind:@"value" toObject:mMediaFilesController withKeyPath:@"arrangedObjects.metadataIfAvailable.{TIFF}.Make" options:nil];
-    [[mCameraContentTableView tableColumnWithIdentifier:@"Model"] bind:@"value" toObject:mMediaFilesController withKeyPath:@"arrangedObjects.metadataIfAvailable.{TIFF}.Model" options:nil];
-    
+
+    [[mCameraContentTableView tableColumnWithIdentifier:@"Date"] bind:@"value" toObject:mMediaFilesController
+        withKeyPath:@"arrangedObjects.metadataIfAvailable.{Exif}.DateTimeOriginal" options:nil];
+    [[mCameraContentTableView tableColumnWithIdentifier:@"Make"] bind:@"value" toObject:mMediaFilesController
+        withKeyPath:@"arrangedObjects.metadataIfAvailable.{TIFF}.Make" options:nil];
+    [[mCameraContentTableView tableColumnWithIdentifier:@"Model"] bind:@"value" toObject:mMediaFilesController
+        withKeyPath:@"arrangedObjects.metadataIfAvailable.{TIFF}.Model" options:nil];
+
     [mMediaFilesController addObserver:self forKeyPath:@"selectedObjects" options:0 context:NULL];
-    
+
     [mCamerasTableView setTarget:self];
     [mCamerasTableView setAction:@selector(openCamera)];
-    
+
     mDeviceBrowser = [[ICDeviceBrowser alloc] init];
     mDeviceBrowser.delegate = self;
     mDeviceBrowser.browsedDeviceTypeMask = ICDeviceLocationTypeMaskLocal|ICDeviceLocationTypeMaskRemote|ICDeviceTypeMaskCamera;
@@ -224,7 +219,7 @@
 {
     BOOL      can           = NO;
     NSArray*  selectedFiles = [mMediaFilesController selectedObjects];
-    
+
     if ( [selectedFiles count] )
     {
         for ( ICCameraFile* f in selectedFiles )
@@ -236,7 +231,7 @@
             }
         }
     }
-        
+
     return can;
 }
 
@@ -245,9 +240,10 @@
 - (BOOL)canDownload
 {
     if ( [[mMediaFilesController selectedObjects] count] )
+    {
         return YES;
-    else
-        return NO;
+    }
+    return NO;
 }
 
 //--------------------------------------------------------------------------------------------------------------- selectedCamera
@@ -255,11 +251,13 @@
 - (ICCameraDevice*)selectedCamera
 {
     ICCameraDevice* camera = NULL;
-    
+
     id selectedObjects = [mCamerasController selectedObjects];
-    
+
     if ( [selectedObjects count] )
+    {
         camera = [selectedObjects objectAtIndex:0];
+    }
 
     return camera;
 }
@@ -270,15 +268,15 @@
 - (void)downloadFiles:(NSArray*)files
 {
     NSDictionary* options = [NSDictionary dictionaryWithObjectsAndKeys:
-                                            [NSURL fileURLWithPath:[@"~/Pictures" stringByExpandingTildeInPath]], ICDownloadsDirectoryURL,
-                                            nil];
-    
+        [NSURL fileURLWithPath:[@"~/Pictures" stringByExpandingTildeInPath]], ICDownloadsDirectoryURL,
+        nil];
+
     for ( ICCameraFile* f in files )
     {
-        [f.device requestDownloadFile:f options:options downloadDelegate:self didDownloadSelector:@selector(didDownloadFile:error:options:contextInfo:) contextInfo:NULL];
+        [f.device requestDownloadFile:f options:options downloadDelegate:self
+            didDownloadSelector:@selector(didDownloadFile:error:options:contextInfo:) contextInfo:NULL];
     }
 }
-
 
 // The following method will be invoked when the download request is completed. If the file is downloaded successfully, options will have the actual path to the downloaded file and error will be set to NULL.
 
@@ -298,7 +296,8 @@
 {
     for ( ICCameraFile* f in files )
     {
-        [f.device requestReadDataFromFile:f atOffset:0 length:f.fileSize readDelegate:self didReadDataSelector:@selector(didReadData:fromFile:error:contextInfo:) contextInfo:NULL];
+        [f.device requestReadDataFromFile:f atOffset:0 length:f.fileSize readDelegate:self
+            didReadDataSelector:@selector(didReadData:fromFile:error:contextInfo:) contextInfo:NULL];
     }
 }
 
@@ -311,9 +310,11 @@
     NSLog( @"  file:        %@\n", file );
     NSLog( @"  error:       %@\n", error );
     NSLog( @"  contextInfo: %p\n", contextInfo );
-    
+
     if ( data )
+    {
         [data writeToFile:file.name atomically:NO];
+    }
 }
 
 //------------------------------------------------------------------------------------------------------------------- uploadFile
@@ -321,8 +322,9 @@
 - (void)uploadFile
 {
     NSURL* file = [NSURL fileURLWithPath:@"IMG_0048.JPG" isDirectory:NO]; // Update this line of code with the URL to the file to be uploaded
-    
-    [[self selectedCamera] requestUploadFile:file options:NULL uploadDelegate:self didUploadSelector:@selector(didUploadFile:error:contextInfo:) contextInfo:NULL];
+
+    [[self selectedCamera] requestUploadFile:file options:NULL uploadDelegate:self
+        didUploadSelector:@selector(didUploadFile:error:contextInfo:) contextInfo:NULL];
 }
 
 - (void)didUploadFile:(NSURL*)fileURL error:(NSError*)error contextInfo:(void*)contextInfo
@@ -350,7 +352,7 @@
 - (void)deviceBrowser:(ICDeviceBrowser*)browser didAddDevice:(ICDevice*)addedDevice moreComing:(BOOL)moreComing
 {
     NSLog( @"deviceBrowser:didAddDevice:moreComing: \n%@\n", addedDevice );
-        
+
     if ( (addedDevice.type & ICDeviceTypeMaskCamera) == ICDeviceTypeCamera )
     {
         [self willChangeValueForKey:@"cameras"];
@@ -438,7 +440,6 @@
 - (void)device:(ICDevice*)device didReceiveStatusInformation:(NSDictionary*)status
 {
     NSLog( @"device: \n%@\ndidReceiveStatusInformation: \n%@\n", device, status );
-    
 }
 
 //---------------------------------------------------------------------------------------------------- device:didEncounterError:
@@ -446,7 +447,7 @@
 - (void)device:(ICDevice*)device didEncounterError:(NSError*)error
 {
     NSLog( @"device: \n%@\ndidEncounterError: \n%@\n", device, error );
-    
+
     NSBeginAlertSheet(
                   NULL,
                   @"OK", 
@@ -466,14 +467,14 @@
 
 - (void)cameraDevice:(ICCameraDevice*)device didAddItem:(ICCameraItem*)item;
 {
-  NSLog( @"cameraDevice: \n%@\ndidAddItem: \n%@\n", device, item );
+    NSLog( @"cameraDevice: \n%@\ndidAddItem: \n%@\n", device, item );
 }
 
 //-------------------------------------------------------------------------------------------------- cameraDevice:didRemoveItem:
 
 - (void)cameraDevice:(ICCameraDevice*)device didRemoveItem:(ICCameraItem*)item;
 {
-  NSLog( @"cameraDevice: \n%@\ndidRemoveItem: \n%@\n", device, item );
+    NSLog( @"cameraDevice: \n%@\ndidRemoveItem: \n%@\n", device, item );
 }
 
 //--------------------------------------------------------------------------------------------- cameraDeviceDidChangeCapability:
@@ -506,4 +507,3 @@
 @end
 
 //------------------------------------------------------------------------------------------------------------------------------
-

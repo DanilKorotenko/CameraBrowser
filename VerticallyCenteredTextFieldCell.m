@@ -57,10 +57,10 @@
 {
     NSSize size     = [self cellSizeForBounds:inCellFrame];
     NSRect newRect  = inCellFrame;
-    
+
     newRect.origin.y   += (inCellFrame.size.height - size.height) / 2.0;
     newRect.size.height = size.height;
-    
+
     [super drawInteriorWithFrame:NSIntersectionRect(inCellFrame, newRect) inView:inControlView];
 }
 
