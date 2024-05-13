@@ -67,31 +67,4 @@
 @property(readonly) BOOL            canDelete;
 @property(readonly) BOOL            canDownload;
 
-- (void)downloadFiles:(NSArray*)files;
-- (void)readFiles:(NSArray*)files;
-- (void)uploadFile;
-
-// ICDeviceBrowser delegate methods
-- (void)deviceBrowser:(ICDeviceBrowser*)browser didAddDevice:(ICDevice*)addedDevice moreComing:(BOOL)moreComing;
-- (void)deviceBrowser:(ICDeviceBrowser*)browser didRemoveDevice:(ICDevice*)removedDevice moreGoing:(BOOL)moreGoing;
-- (void)deviceBrowser:(ICDeviceBrowser*)browser deviceDidChangeName:(ICDevice*)device;
-- (void)deviceBrowser:(ICDeviceBrowser*)browser deviceDidChangeSharingState:(ICDevice*)device;
-
-// ICDevice and ICCameraDevice delegate methods
-- (void)didRemoveDevice:(ICDevice*)removedDevice;
-- (void)device:(ICDevice*)device didOpenSessionWithError:(NSError*)error;
-- (void)deviceDidBecomeReady:(ICCameraDevice*)camera;
-- (void)device:(ICDevice*)device didCloseSessionWithError:(NSError*)error;
-- (void)deviceDidChangeName:(ICDevice*)device;
-- (void)deviceDidChangeSharingState:(ICDevice*)device;
-- (void)device:(ICDevice*)device didReceiveStatusInformation:(NSDictionary*)status;
-- (void)device:(ICDevice*)device didEncounterError:(NSError*)error;
-
-- (void)cameraDevice:(ICCameraDevice*)device didAddItem:(ICCameraItem*)item;
-- (void)cameraDevice:(ICCameraDevice*)device didRemoveItem:(ICCameraItem*)item;
-- (void)cameraDeviceDidChangeCapability:(ICCameraDevice*)device;
-- (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item;
-- (void)cameraDevice:(ICCameraDevice*)device didReceiveMetadataForItem:(ICCameraItem*)item;
 @end
-
-//------------------------------------------------------------------------------------------------------------------------------

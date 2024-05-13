@@ -105,15 +105,15 @@
 		DAE1B5BC2BF21EA00038F801 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				06569B8F0DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.h */,
-				06569B900DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m */,
 				06FB08390D9AF7470081CC27 /* AppController.h */,
 				06FB083A0D9AF7470081CC27 /* AppController.m */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-				DAE1B5C92BF223680038F801 /* ICDevice+CameraBrowser.h */,
-				DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */,
 				DAE1B5CC2BF2245C0038F801 /* CGImageRefToNSImageTransformer.h */,
 				DAE1B5CD2BF2245C0038F801 /* CGImageRefToNSImageTransformer.m */,
+				DAE1B5C92BF223680038F801 /* ICDevice+CameraBrowser.h */,
+				DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				06569B8F0DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.h */,
+				06569B900DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
