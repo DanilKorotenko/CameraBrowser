@@ -3,22 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		06569AF40DE1E27400595F89 /* CameraBrowser.icns in Resources */ = {isa = PBXBuildFile; fileRef = 06569AF30DE1E27400595F89 /* CameraBrowser.icns */; };
 		06569B910DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06569B900DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m */; };
-		0670F27A0DC63F1C00DBB76C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0670F2780DC63F1C00DBB76C /* MainMenu.xib */; };
 		06FB07D80D9AF5830081CC27 /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FB07D70D9AF5830081CC27 /* ImageCaptureCore.framework */; };
 		06FB083B0D9AF7470081CC27 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FB083A0D9AF7470081CC27 /* AppController.m */; };
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		DAE1B5C42BF21F6A0038F801 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAE1B5C32BF21F6A0038F801 /* InfoPlist.strings */; };
+		DAE1B5C72BF21F750038F801 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE1B5C62BF21F750038F801 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		06569AF30DE1E27400595F89 /* CameraBrowser.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CameraBrowser.icns; sourceTree = SOURCE_ROOT; };
+		06569AF30DE1E27400595F89 /* CameraBrowser.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CameraBrowser.icns; path = Resources/CameraBrowser.icns; sourceTree = SOURCE_ROOT; };
 		06569B8F0DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticallyCenteredTextFieldCell.h; sourceTree = "<group>"; };
 		06569B900DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticallyCenteredTextFieldCell.m; sourceTree = "<group>"; };
 		06FB07D70D9AF5830081CC27 /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = /System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = "<absolute>"; };
@@ -31,8 +31,9 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CameraBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAE1B5BA2BF21C140038F801 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DAE1B5BB2BF21C150038F801 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DAE1B5C22BF21F6A0038F801 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DAE1B5C52BF21F750038F801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DAE1B5C82BF21F750038F801 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,23 +79,12 @@
 		29B97314FDCFA39411CA2CEA /* CameraBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1B5BC2BF21EA00038F801 /* Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				DAE1B5BD2BF21EDD0038F801 /* Resources */,
+				DAE1B5BC2BF21EA00038F801 /* Sources */,
 			);
 			name = CameraBrowser;
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				06569AF30DE1E27400595F89 /* CameraBrowser.icns */,
-				0670F2780DC63F1C00DBB76C /* MainMenu.xib */,
-				8D1107310486CEB800E47090 /* Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -116,6 +106,17 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		DAE1B5BD2BF21EDD0038F801 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DAE1B5C32BF21F6A0038F801 /* InfoPlist.strings */,
+				DAE1B5C62BF21F750038F801 /* MainMenu.xib */,
+				06569AF30DE1E27400595F89 /* CameraBrowser.icns */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +171,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				0670F27A0DC63F1C00DBB76C /* MainMenu.xib in Resources */,
+				DAE1B5C42BF21F6A0038F801 /* InfoPlist.strings in Resources */,
 				06569AF40DE1E27400595F89 /* CameraBrowser.icns in Resources */,
+				DAE1B5C72BF21F750038F801 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,20 +193,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0670F2780DC63F1C00DBB76C /* MainMenu.xib */ = {
+		DAE1B5C32BF21F6A0038F801 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DAE1B5BB2BF21C150038F801 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = SOURCE_ROOT;
-		};
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DAE1B5BA2BF21C140038F801 /* en */,
+				DAE1B5C22BF21F6A0038F801 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DAE1B5C62BF21F750038F801 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAE1B5C52BF21F750038F801 /* Base */,
+				DAE1B5C82BF21F750038F801 /* mul */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -220,7 +222,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CameraBrowser;
 				PRODUCT_NAME = CameraBrowser;
@@ -235,7 +237,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CameraBrowser;
 				PRODUCT_NAME = CameraBrowser;
