@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="205" id="206"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
+            <items>
+                <menuItem title="CameraBrowser" id="56">
+                    <menu key="submenu" title="CameraBrowser" systemMenu="apple" id="57">
+                        <items>
+                            <menuItem title="About CameraBrowser" id="58">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="196">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Hide CameraBrowser" keyEquivalent="h" id="134">
+                                <connections>
+                                    <action selector="hide:" target="-2" id="152"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="145">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-2" id="146"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="150">
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-2" id="153"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="149">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Quit CameraBrowser" keyEquivalent="q" id="136">
+                                <connections>
+                                    <action selector="terminate:" target="-2" id="139"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Edit" id="163">
+                    <menu key="submenu" title="Edit" id="169">
+                        <items>
+                            <menuItem title="Undo" keyEquivalent="z" id="158">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="180"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Redo" keyEquivalent="Z" id="173">
+                                <connections>
+                                    <action selector="redo:" target="-1" id="178"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="156">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Cut" keyEquivalent="x" id="160">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="175"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Copy" keyEquivalent="c" id="157">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="181"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" keyEquivalent="v" id="171">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="176"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete" id="164">
+                                <connections>
+                                    <action selector="delete:" target="-1" id="195"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" keyEquivalent="a" id="172">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="179"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="241">
+                    <menu key="submenu" title="Window" systemMenu="window" id="242">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="246">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="247"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="244">
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="248"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="243">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Bring All to Front" id="245">
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="249"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="103">
+                    <menu key="submenu" title="Help" id="106">
+                        <items>
+                            <menuItem title="CameraBrowser Help" keyEquivalent="?" id="111">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="122"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="141" y="154"/>
+        </menu>
+        <customObject id="205" userLabel="AppController" customClass="AppController">
+            <connections>
+                <outlet property="mCameraContentTableView" destination="482" id="511"/>
+                <outlet property="mCamerasController" destination="439" id="454"/>
+                <outlet property="mCamerasTableView" destination="443" id="453"/>
+                <outlet property="mMediaFilesController" destination="502" id="510"/>
+            </connections>
+        </customObject>
+        <window title="Camera Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="21" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="100" y="200" width="1183" height="550"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <value key="minSize" type="size" width="1000" height="400"/>
+            <view key="contentView" focusRingType="none" id="2">
+                <rect key="frame" x="0.0" y="0.0" width="1183" height="550"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="464">
+                        <rect key="frame" x="968" y="12" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="465">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="473"/>
+                            <binding destination="439" name="target" keyPath="selection" id="472">
+                                <dictionary key="options">
+                                    <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <string key="NSSelectorName">requestCloseSession</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="466">
+                        <rect key="frame" x="1064" y="12" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="467">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="471">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="439" name="target" keyPath="selection" id="468">
+                                <dictionary key="options">
+                                    <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <string key="NSSelectorName">requestOpenSession</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <splitView focusRingType="none" fixedFrame="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="516">
+                        <rect key="frame" x="20" y="60" width="1143" height="473"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <subviews>
+                            <box focusRingType="none" fixedFrame="YES" boxType="custom" borderType="none" title="Box" titlePosition="noTitle" id="463">
+                                <rect key="frame" x="0.0" y="0.0" width="237" height="473"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="GWk-jC-7Sb">
+                                    <rect key="frame" x="0.0" y="0.0" width="237" height="473"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="456">
+                                            <rect key="frame" x="-3" y="456" width="239" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cameras" id="457">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="440">
+                                            <rect key="frame" x="0.0" y="11" width="235" height="437"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                            <clipView key="contentView" id="fOe-CZ-8g4">
+                                                <rect key="frame" x="1" y="1" width="233" height="435"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="50" id="443">
+                                                        <rect key="frame" x="0.0" y="0.0" width="233" height="435"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <size key="intercellSpacing" width="3" height="2"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                        <tableColumns>
+                                                            <tableColumn editable="NO" width="50" minWidth="50" maxWidth="50" id="458">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                </tableHeaderCell>
+                                                                <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="imageCell:460:image" id="460"/>
+                                                                <connections>
+                                                                    <binding destination="439" name="value" keyPath="arrangedObjects.icon" id="589">
+                                                                        <dictionary key="options">
+                                                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                                            <integer key="NSConditionallySetsEditable" value="1"/>
+                                                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                                                            <string key="NSValueTransformerName">CGImageRefToNSImageTransformer</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </tableColumn>
+                                                            <tableColumn editable="NO" width="168" minWidth="40" maxWidth="1000" id="445">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="448" customClass="VerticallyCenteredTextFieldCell">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                                                <connections>
+                                                                    <binding destination="439" name="value" keyPath="arrangedObjects.name" id="584">
+                                                                        <dictionary key="options">
+                                                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                                            <integer key="NSConditionallySetsEditable" value="1"/>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </tableColumn>
+                                                        </tableColumns>
+                                                    </tableView>
+                                                </subviews>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="442">
+                                                <rect key="frame" x="-100" y="-100" width="139" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="441">
+                                                <rect key="frame" x="217" y="1" width="15" height="430"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                </view>
+                            </box>
+                            <tabView focusRingType="none" fixedFrame="YES" controlSize="small" id="474">
+                                <rect key="frame" x="231" y="-3" width="919" height="486"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tabViewItems>
+                                    <tabViewItem label="List View" identifier="2" id="477">
+                                        <view key="view" id="478">
+                                            <rect key="frame" x="10" y="25" width="899" height="448"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <scrollView focusRingType="none" fixedFrame="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="479">
+                                                    <rect key="frame" x="-1" y="-1" width="901" height="448"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <clipView key="contentView" id="CbR-IR-c72">
+                                                        <rect key="frame" x="1" y="1" width="884" height="446"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="50" headerView="483" id="482">
+                                                                <rect key="frame" x="0.0" y="0.0" width="884" height="418"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <size key="intercellSpacing" width="3" height="2"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                                <tableColumns>
+                                                                    <tableColumn editable="NO" width="66" minWidth="66" maxWidth="66" id="484">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </tableHeaderCell>
+                                                                        <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="imageCell:460:image" id="500"/>
+                                                                        <connections>
+                                                                            <binding destination="502" name="value" keyPath="arrangedObjects.thumbnailIfAvailable" id="588">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                                                    <integer key="NSConditionallySetsEditable" value="1"/>
+                                                                                    <integer key="NSConditionallySetsEnabled" value="0"/>
+                                                                                    <string key="NSValueTransformerName">CGImageRefToNSImageTransformer</string>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                        </connections>
+                                                                    </tableColumn>
+                                                                    <tableColumn editable="NO" width="103" minWidth="40" maxWidth="120" id="485">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Name">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="486" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                                                        <connections>
+                                                                            <binding destination="502" name="value" keyPath="arrangedObjects.name" id="587">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                        </connections>
+                                                                    </tableColumn>
+                                                                    <tableColumn identifier="Date" editable="NO" width="132" minWidth="10" maxWidth="140" id="488">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Date">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="489" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                                                    </tableColumn>
+                                                                    <tableColumn editable="NO" width="80" minWidth="10" maxWidth="90" id="490">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Size">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="491" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                                                        <connections>
+                                                                            <binding destination="502" name="value" keyPath="arrangedObjects.fileSize" id="580"/>
+                                                                        </connections>
+                                                                    </tableColumn>
+                                                                    <tableColumn editable="NO" width="58" minWidth="10" maxWidth="60" id="492">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Width">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="493" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                                                        <connections>
+                                                                            <binding destination="502" name="value" keyPath="arrangedObjects.metadataIfAvailable.PixelWidth" id="508"/>
+                                                                        </connections>
+                                                                    </tableColumn>
+                                                                    <tableColumn editable="NO" width="58" minWidth="10" maxWidth="60" id="494">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Height">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="495" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                                                        <connections>
+                                                                            <binding destination="502" name="value" keyPath="arrangedObjects.metadataIfAvailable.PixelHeight" id="509"/>
+                                                                        </connections>
+                                                                    </tableColumn>
+                                                                    <tableColumn identifier="Make" editable="NO" width="80" minWidth="10" maxWidth="140" id="496">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Make">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="497" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                                                    </tableColumn>
+                                                                    <tableColumn identifier="Model" editable="NO" width="274" minWidth="10" maxWidth="500" id="498">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Model">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="499" customClass="VerticallyCenteredTextFieldCell">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    </tableColumn>
+                                                                </tableColumns>
+                                                            </tableView>
+                                                        </subviews>
+                                                    </clipView>
+                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.01489118" horizontal="YES" id="481">
+                                                        <rect key="frame" x="-100" y="-100" width="873" height="15"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="480">
+                                                        <rect key="frame" x="885" y="29" width="15" height="418"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <tableHeaderView key="headerView" wantsLayer="YES" focusRingType="none" id="483">
+                                                        <rect key="frame" x="0.0" y="0.0" width="884" height="28"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </tableHeaderView>
+                                                </scrollView>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Outline View" identifier="1" id="475">
+                                        <view key="view" id="476">
+                                            <rect key="frame" x="10" y="25" width="888" height="435"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="347">
+                                                    <rect key="frame" x="-1" y="-1" width="891" height="435"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <clipView key="contentView" id="DbB-Ai-Lte">
+                                                        <rect key="frame" x="1" y="29" width="889" height="405"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="430" indentationPerLevel="13" autoresizesOutlineColumn="YES" outlineTableColumn="352" id="350">
+                                                                <rect key="frame" x="0.0" y="0.0" width="889" height="405"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <size key="intercellSpacing" width="3" height="2"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                                <tableColumns>
+                                                                    <tableColumn width="877" minWidth="16" maxWidth="1000" id="352">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="355">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="name"/>
+                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                        <connections>
+                                                                            <binding destination="356" name="value" keyPath="arrangedObjects.name" id="359"/>
+                                                                        </connections>
+                                                                    </tableColumn>
+                                                                </tableColumns>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="205" id="429"/>
+                                                                </connections>
+                                                            </outlineView>
+                                                        </subviews>
+                                                    </clipView>
+                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="349">
+                                                        <rect key="frame" x="1" y="304" width="301" height="15"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="348">
+                                                        <rect key="frame" x="302" y="17" width="15" height="287"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <tableHeaderView key="headerView" focusRingType="none" id="430">
+                                                        <rect key="frame" x="0.0" y="0.0" width="889" height="28"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </tableHeaderView>
+                                                </scrollView>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                    </splitView>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="517">
+                        <rect key="frame" x="132" y="12" width="118" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="518">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="439" name="enabled2" keyPath="selection.canTakePicture" previousBinding="534" id="536">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="534"/>
+                            <binding destination="439" name="target" keyPath="selection" id="520">
+                                <dictionary key="options">
+                                    <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <string key="NSSelectorName">requestTakePicture</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="521">
+                        <rect key="frame" x="387" y="12" width="118" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="522">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="502" name="argument" keyPath="selectedObjects" id="563">
+                                <dictionary key="options">
+                                    <integer key="NSAllowsNullArgument" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSInvokesSeparatelyWithArrayObjects" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <null key="NSSelectorName"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="205" name="enabled" keyPath="canDelete" id="562"/>
+                            <binding destination="439" name="target" keyPath="selection" previousBinding="563" id="564">
+                                <dictionary key="options">
+                                    <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <string key="NSSelectorName">requestDeleteFiles:</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="537">
+                        <rect key="frame" x="14" y="12" width="118" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Sync Clock" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="538">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="439" name="enabled2" keyPath="selection.canSyncClock" previousBinding="542" id="544">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="542"/>
+                            <binding destination="439" name="target" keyPath="selection" id="539">
+                                <dictionary key="options">
+                                    <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <string key="NSSelectorName">requestSyncClock</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="565">
+                        <rect key="frame" x="269" y="12" width="118" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="566">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="502" name="argument" keyPath="selectedObjects" id="576">
+                                <dictionary key="options">
+                                    <integer key="NSAllowsNullArgument" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSInvokesSeparatelyWithArrayObjects" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <null key="NSSelectorName"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="205" name="enabled" keyPath="canDownload" id="572"/>
+                            <binding destination="205" name="target" keyPath="self" previousBinding="576" id="579">
+                                <dictionary key="options">
+                                    <integer key="NSAlwaysPresentsApplicationModalAlerts" value="0"/>
+                                    <integer key="NSConditionallySetsEnabled" value="1"/>
+                                    <integer key="NSConditionallySetsHidden" value="0"/>
+                                    <integer key="NSRaisesForNotApplicableKeys" value="1"/>
+                                    <string key="NSSelectorName">downloadFiles:</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="590">
+                        <rect key="frame" x="505" y="12" width="118" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Read Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="591">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="502" name="argument" keyPath="selectedObjects" id="598">
+                                <dictionary key="options">
+                                    <string key="NSSelectorName">readFiles:</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="205" name="enabled" keyPath="canDownload" id="596"/>
+                            <binding destination="205" name="target" keyPath="self" previousBinding="598" id="600">
+                                <dictionary key="options">
+                                    <string key="NSSelectorName">readFiles:</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="601">
+                        <rect key="frame" x="623" y="12" width="118" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Upload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="602">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="439" name="enabled" keyPath="selection.hasOpenSession" id="603"/>
+                            <binding destination="205" name="target" keyPath="self" id="614">
+                                <dictionary key="options">
+                                    <string key="NSSelectorName">uploadFile</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="205" id="207"/>
+            </connections>
+            <point key="canvasLocation" x="141" y="-218"/>
+        </window>
+        <arrayController id="439" userLabel="Cameras Controller">
+            <declaredKeys>
+                <string>name</string>
+                <mutableString>contents</mutableString>
+                <string>icon</string>
+                <string>hasOpenSession</string>
+                <string>mediaFiles</string>
+                <string>canTakePicture</string>
+                <string>canSyncClock</string>
+                <string>canDeleteOneFile</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="205" name="contentArray" keyPath="cameras" id="449"/>
+            </connections>
+        </arrayController>
+        <treeController mode="entity" entityName="Node" fetchPredicateFormat="parent == nil" automaticallyPreparesContent="YES" childrenKeyPath="children" id="356" userLabel="Content Controller">
+            <declaredKeys>
+                <string>name</string>
+                <string>canAddChild</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="439" name="contentArray" keyPath="selection.contents" id="452"/>
+            </connections>
+        </treeController>
+        <arrayController id="502" userLabel="MediaFiles Controller">
+            <declaredKeys>
+                <string>thumbnailIfAvailable</string>
+                <string>name</string>
+                <string>size</string>
+                <string>metadataIfAvailable.PixelWidth</string>
+                <string>metadataIfAvailable.PixelHeight</string>
+                <string>fileSize</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="439" name="contentArray" keyPath="selection.mediaFiles" id="503"/>
+            </connections>
+        </arrayController>
+    </objects>
+    <resources>
+        <image name="imageCell:460:image" width="50" height="50">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
+S2V5ZWRBcmNoaXZlctEICVRyb290gAGuCwwZGh8UJCkqMTQ3PUBVJG51bGzWDQ4PEBESExQVFhcYVk5T
+U2l6ZV5OU1Jlc2l6aW5nTW9kZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVwc1dOU0NvbG9ygAIQAIAN
+EiDAAACAA4ALWHs1MCwgNTB90hsPHB5aTlMub2JqZWN0c6EdgASACtIbDyAjoiEigAWABoAJ0w8lJico
+FF8QFE5TVElGRlJlcHJlc2VudGF0aW9uXxAZTlNJbnRlcm5hbExheW91dERpcmVjdGlvboAIgAdPETPi
+TU0AKgAAJxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAAAAAcEAYwSSoRaAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACAAAAAXddNpCTaCXOAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAMKAwEgwZVM2JFWINcLAQA0
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAC
+AAAAAk88IW7RlTjvm1Ui3x0IA1UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWpYVGw8B8MOmtYybnQyQLkBkdH0grKzFlSE9SmzU3PX0AAAAB
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIUDw8PKx0gIEQtMTRfQEFGgmFcWLXRpm76wn1E+8Z+Qv2bcF3+
+l6Gs/5mjrv+gqrX/eoWQ6gAAABcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAYAAAAXDAwMKRwcH0AqLTFfQkVIfFhgZJptcny3fYSKz42UneaZpKv1pK63/6qyv/+eqLb/
+wrWd/9Odav/HhVj/y4VW/6V1Vv+XmKD/oKWs/5Odp/+Llpz6BgsLPQAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAT
+DAoMKBgbHkEqLTBaQUdKeVhbXphsc3W0hI2S0JKbouSiqLHzr7nC/7K8x/+zvMb/sLrE/6y0wP+lr7r/
+oau1/6Kpsv+hprD/oqmx/6Cgof/ev4n/3Jtb/9yaWv/jnVj/yodO/8vBvP/V19n/lp2m/5ehq/8iJClm
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAUCAcJKRoaGj4vLjRb
+P0FHeVdaXpZydX+1g4qPzZacouOor7n2tL3F/rnCyv+8xc7/usTN/7W/yP+yusT/rrbA/6mwuf+or7f/
+rbS8/7C0uv+2ur7/wcTH/8vMzv/U1NX/3Nzd/+Xl5f/i4+X/2My0//DIf//qs2j/6q9l/+utY//ZlE//
+xrGn/+Hj5f+eo63/l6Kt/zk/QpUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQWFidrcXas
+hYqOz56np+WnrbLyucDG/8DJz//BytH/v8jP/7zFzv+5wsr/s7zE/7C4wP+wt8D/r7S8/7K3vP+7wMX/
+w8bJ/8zNz//X2Nr/4ODh/+Xl5f/s6+v/8PDv//Ly8v/y8vL/8vLx//Hx8P/u7u//7e7v/9nY2P/l0KD/
+7MBu/+q4af/psWT/66xi/+GcUP+/oIr/4+Xn/6ittP+SnKf/V11mwQAAAAUAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAGRobT73Dxf/EzdT/usPK/7O8xP+yub//tLm+/7m9wv+7vsH/wcTH/8zO0f/T1db/
+2tvc/+Tk5P/r6ur/7+7u//Hx8f/09PP/9fX0/+jo6f/x8fH/9fX1//Hx8f/w8fL/5eXl/+3u7v/t7u7/
+6Ojo/+7u7v/p6uz/1cy//+7Rif/pv2r/6Lpp/+m0Zf/qrmH/56JU/8CScf/h4eL/ub3D/42Xov9rc3zi
+AAAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0pqio7rrDzP+0ucD/29rb/+Dh4f/l5eX/
+7Orq/+/v7v/w8O//8PDw//Hx8f/x8fL/8PDw//Dw8P/w8PD/8PDw//Dw8P/x8vL/5OXl/7i5uv/d29z/
+9fX1//Dx8v/W1tf/1NTV/9nb2//X19j/6evr/+Dg4v/gz6f/7853/+vCbP/rvmr/6rdk/+qzYP/rq1r/
+w4la/9rX1v/Ex8v/iZKe/32Ej/sICAw5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACSUlpzh
+usHL/7e7wv/v7+7/7Ozs/+3s7P/t7e3/7e3t/+7u7v/u7u7/6+vr/+fl5//v7+//8fHx//Dw8P/w8PD/
+7fDx//Dw8f/39/f/vbu7/5J7ff+6t7f/8PPz/+zt7P/n5+f/5eXn/93e3v/n6ev/1dDK/+7Xkv/syXH/
+68Vs/+rBaf/puWP/6rRe/+qxXP/KjlH/0cfE/9fZ3P+KkZr/iZOf/xsdI2YAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAFnt/f829xM7/rLG5/+rp6P/r6+v/6+rr/+rq6v/l5eX/5OTk/+Tk5P/l5eX/
+5OTk/+jo6P/o5+j/8fHx//Hx8f/y8vL/8vLy//T09P/q6+v/sZ+f/6yQkv+tqqr/8fLy//L09f/x8fL/
+8fHx/+Xo6v/bzrL/8taB/+vMb//ryG//68Np/+y+ZP/qt2D/67Rc/9WTSv/Ftaz/3uDj/5GYof+JlKH/
+ND5BlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANZWpqt8DJz/+jqrP/5eXl/+zs7P/b29v/
+4ODg/+Dg4P/n5+f/4uLi/+np6f/o6Oj/5eXl/+vr7f/y8vL/8vLy//Pz8//09PT/9PT0//j4+P/My8v/
+vJiY/7mZmv+opab/7/Ly//Lz8//x8vP/29jX/+nWnP/v0nf/7c90/+zMb//sxmr/6sFm/+u6YP/ptl3/
+3Z9J/8Gikv/l5+n/nqOq/4aQnP9NVly/AAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdPT1Sg
+w8nR/6Wttv/g4OH/7u7u/+Xl5f/V1dX/5eXl/+Li4v/l5eX/7+/v/+/v8P/v8PD/8fHx//Ly8v/z8/P/
+9PT0//T09P/39/f/7vHx/+Di4/+0o6L/zJ+f/7mLi/+joaH/8fT0/+zv8f/Yzrv/8dyL/+7Sdf/t0HX/
+7M5w/+vJbf/rw2b/7L1h/+u4XP/lqE7/u5J0/+Pk5f+wtLn/gYmW/2ZxeeMAAAAYAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAjc+P4bAx8//oqy3/9fX2P/v7+//7Ozs/+jo6P/v7u//7e3u/+/v8P/v7/D/
+7+/w//Ly8v/y8vL/8/Pz//T09P/y9PT/8/Pz/97e3v/QuLn/1bS0/7ixsP+/pqX/1Jub/7uSk/+rqan/
+4uDi/+TTpP/y2n//7tV5/+/SdP/tz3H/7ctu/+zFaf/swGP/6rle/+myUv+/i1//3drb/8PGy/99h5L/
+cnqM+AQFCjoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABISImbr3Eyf+gqrX/zM3P//Dw8P/t7e3/
+7+/v/+/v7//v7+//7+/v/+7v7//x8fH/8/Pz//Ly8v/z8/P/9PT0//f39//U1NT/paKi/9qytv/yvb7/
+wqeo/8K7uv/Gn53/15+f/76dnv+4qp//896V//DXfP/v1nr/7tN2/+/Pc//tzHD/7Mdq/+zDZP/rvF//
+67ZW/8aJS//SzMr/0tTX/4GIk/9/iZf/GRwhYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERNX
+tr3D/qSuuf/FyMv/8PDv/+3t7f/v7/D/7+/v/+/v7//u7/D/8PDw//Ly8v/z8/P/8/P0//T09P/09PT/
++fn5/7i5uP/BwcH/tLCy/4uAgf+empr/6evr/8G1s//LnZ3/y46Q/9Kxif/y3YT/8dh///DXfP/w1Xn/
+8NJ0/+7Obv/ty2z/7cNl/+u/YP/ruFn/zpFC/8W1sP/f4eT/h4uV/3+Jlf8tMjqQAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAMDBUGlrbP3qbPA/7y/wv/w8O//6enp/+Lg4f/r6+v/8PDw/+/v8f/x8fL/
+8vLy//Pz8//09PT/9PT0//b29v/p6en/sLCx/7u8vP+dnqH/b3J1/7S0tP/9/f3/3N7e/8Kqqv++iYT/
+7taU/+7Tc//x2oD/8dl9//DTdv/tz27/7tBy/+i+Xf/jsE//57VU/+m0U//amEL/u6CR/+Tl6f+XnKL/
+eoWR/0ZUV7wAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALpeYoeitt8L/rbG3//Hv7//h4eH/
+2NjY/+3t7f/t7u//3+Dh//Hx8v/z8/P/8/Pz//T09P/09PT/+vr7/768u/+vrKX/wcG//5eanf90dXj/
+6+vr//j4+f/09fX/ure5/76ihv/45JT/8Nd8/+nIaP/lwWD/6sRe/9ehSv/itXD/4a9Q/+CpRf/swV//
+7L1f/+GnSf+5k3v/5OXo/6issf92f4v/XWVt4AAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf
+hIqK2LK8x/+orbb/6+vq/+Li4v/u7u7/7+/v/+7u7//T09P/8fHy//f39//5+Pj/+vr7//n5+v/w8fL/
+sq6h/+LYrf/Du57/ioWD/3Nzc/+hoaH/iomJ/3Bwb/9tZmT/zrZ2//bhiP/y3YX/7c9x/+3Pcf/v0m//
+w45L/9WocP/w0XP/6sBc/+u/XP/tvl7/6LBP/7qGW//d3d//v8PF/3R8iP9rc4T6BgYGNQAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAABNvcnnGt7/J/6SrtP/n5+f/7+/w//Dw8P/x8fH/8fLz/8/P0P/c3N3/
+1tPR/8PDwv+ppqX/joqG/25nZP+qo4L/4tKO/8ixfP+Xh3X/e3Ro/5eKe/+ajn7/pZqL/76qjv/03Iv/
+8dh///Tchf/z24P/7c9z/+rIav+0hmD/1Kdz//Pagv/txmX/6rxa/+3AX//rtVP/voVK/9PPz//R09X/
+dnyH/3aBjf8VGh1fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACldZXq+6wsv/maOs/+Dg4f/v7+//
+3t/f/9TU1f/T09T/oqWl/4B6cf+JgnX/jYh8/6CWhf+soI3/mox8/+7hqP/v2oz/xrKL/6igk//Mvaj/
+18ev/8u3nP/CrZT/4MeU//fijf/z3ov/8dZ///DVff/uznH/y5hJ/7ueif/SoXb/8dWD/+/Kaf/rvFv/
+7sFf/+26Vf/Khz3/xbez/93f4f+Bh4//doCO/yovOIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG
+QENDlrvEy/+WoK3/2dnb//Dw8P/l5eX/5efn/+3w8P/a2tv/w7ut/+rhzf/Yzr3/7+PQ/9fLuv+/tpT/
+++qe/9rBff+woIf/v7Sm/9rJtP/aybP/3cSn/8uvj//x3Jf/9uKP//Xgj//z2ob/7tB5//HSdP+XZTX/
+tKqj/8WegP/wzHv/7cRl/+i1VP/tvl7/7btZ/9WUPP+xmYv/4uTn/5CVnP90for/QEhRugAAAAMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAIuMTJ9usHJ/5mjsf/S0tT/8fHw/+/v7//v7/D/8PDx/+Tk5P+2sqr/
+7eHL/+vZvf/z5M7/uq6Z/+fbpf/t2Ij/xahs/6ygjf/ZzLn/28qy/9zIrP/Wv6j/1LyQ//nklP/13o3/
+89qJ//LZhf/z14H/0qFN/4hqWP92d3v/uaCT/+zDd//xzG7/7cNj/+7BYf/sulj/4J9A/7eRe//j5ej/
+qa2x/252g/9TXWjfAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsbHWSzusL/l6Kw/8HEx//y8vH/
+7u7u/+/v7//t8PD/7Ozt/7Ovqv/o2L3/8uDF/+LUwP+6qoD/++iV/9e/dv+wmGv/q6OT/762qP+zq53/
+tKyi/6GWiv/kzY7/+OOU//Xhkv/14I//9N+O//jfiP++i0r/dWlm/5aTjv+0pZ7/5Ll2//TVd//vyGf/
+78Ni/+y6Wv/lqUT/toRd/97e4f+8v8L/a3WA/2FrevcGBgY1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Cw0NT6OttPqbo7P/trq+//Ly8f/u7u7/7+/v/+7v8P/x8vP/sKyn/9PFsv/RxLT/n5SD/8a5fP/Zw3b/
+sJdg/5aNgP/AwL//0dHQ/9zd3f/j5ej/18q2//nll//25Zf/9+OV//Xhk//24ZL/7clx/7mUdP+/vLn/
+sKWV/66ejv/XomT/9dZ9/+/IZf/vw2L/7Lpa/+ywTv+8ekP/0tDP/8/R1f9wd4L/cXuI/xMYHFwAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6lJyl8Z+ptv+wtLv/7/Dv/+7u7v/d3d7/0NDR/9TU1f+traz/
+tLS0/8DBw/+qo4X/7t+e/9zFfP+wmG7/y8jE//v7/P/09fX/9PX2/+Ph5P/n0Z3/++ia//jlm//45Jj/
+9uGU//nklP/Uo1T/w7Gm/+nq6/+2r6X/qpiB/8eRVf/01Hv/8Mhn/+/CYv/suVr/7rJS/8J8Nv/Iv7v/
+3N/h/3qBif9weof/JS01jAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeJj5fkoqy5/6Gmrv/t7Oz/
+7u7u/+jo5//o6On/7+/w/9bW1v/t7e7/w8PD/9nPof/25Z//0LmC/6iYhf/p6+z/8vLz//Dx8f/v8vT/
+2M/D//Xgl//455//+OWd//jkmv/345n/9dmF/7qLWP/Y1NT/6+7w/8/NzP+4sKL/yJpo//POef/uw2X/
+78Nh/+26Wv/us1T/0IEy/7unnf/i5ef/jpOa/2t1hP8+SE64AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAG3R6f9Glr7z/lZqk/+jo6P/u7u7/7u7u/+/v7//u7/D/5eXl/+Hh5P+0r5//8+Kh/+vVif+znnb/
+u7ey//X19v/w8PH/8PHy/+Xl6//gzKP/++qe//noov/456D/+OWd//rnnP/it2X/uJ2J/+Xn6f/n6ev/
+5ejp/7q3sf+8kXH/7cZx/+m2YP/vwmD/7bpX/+ywU//Zjzf/s5OB/+Pl5/+jp6z/aHKA/09bYt0AAAAU
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARXmJnvKmzvv+TmKb/4uLi/+7u7v/s7O3/7e3t/+3t7//t7e7/
+qqus/7erjP/y3ZL/28iU/5+Tgf/f39//8fLz/+/v8P/w8fL/2tPO/+/alv/66qT/+eii//jnof/45Z//
++eSV/8STUf/OxMD/6evs/+Xn6f/l5+r/293e/6+Rfv/jrFz/67pn//DBXv/uuVf/7a9T/+ObO/+xfF7/
+3N7g/7u+wf9ncXz/XWp59wkJCTMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhNUFSlqrS+/42UoP/Y2Nn/
+7+7u/+zs7P/t7e3/7u7u/+7v8P+nqKj/sa6l/7irjP+ckYT/npiT/+rs7f/t8PD/7u/w/+nq7f/ayqz/
+++ie//nqqP/56aX/+Oei//noov/uy3n/tIxr/+Dg4f/l6Or/5OXo/+Tl5//l6Ov/1MTB/9ykWv/00HT/
+8MFe/+23WP/srlH/6aNA/7N1Qv/U0tP/zM7S/2xzff9qdYH/ExYaWwAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAzU6Ooyqsr3/h46e/8zMzv/v7+//6+vr/+zs7P/v7+//4OHh/8HBwf/l4t3/zL6v/3FqY/+jo6T/
+5eXl/+/u8P/v7/D/3drZ/+nTlf/67Kn/+uup//npp//56KL/++qg/9OiVf/Br6X/6Ons/+Xn6v/k5en/
+5OXp/+Pl6v/c19z/2aln//bTdv/vv1z/7rNV/+yuT//tqEL/vm4t/8nAv//c3uH/foON/2t1hP8mLDKI
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACISQkdKawu/+IkKD/w8TH/+/v7v/r6+v/6+vr/+3t7f/Q0ND/
+39/f/9LIvv+sopj/wMC//+Xl5f/b2tv/7O3u/+rs7//Vyrf/+OSa//nsrf/666r/+eqo//nqpv/024v/
+toZU/9PQ0f/e3uP/1dPU/9HLxv/Jwbr/yLej/8q0mP/crWT/9M9x/++8Wv/vtFT/7K9N/+2kRf/Fcy7/
+tKKa/8vN0P+Cho3/aXOC/z5DTbYAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAREhZboqy1/4iQof+1uLv/
+7+/u/+vr6//r6+v/6unq/+Lj4//BwcH/qqei/8rKyv/i4+T/7u7v/+zt7f/s7O7/39/i/+DLmf/77KP/
++uuq//rrqf/56ab/+uul/+rHev+4k2f/yrKL/9W6h//XuXf/4sF7/+nIdf/vzHX/885z//PKa//tu1//
+6q9W/+WjT//fl0X/2YtA/7tnKv9oT0j/YGlz/2Vtd/9sdIH/U1po3wAAABsAAAAAAAAAAAAAAAAAAAAA
+AAAAAAIEBEWSmqX4iJKh/6OmrP/v7u7/6urq/+vr6//s6uv/7+/v/7a2tv/Y2Nj/z8/Q/+vq6//p6+v/
+6evr/+rs7v/VzcP/89uS//rrpf/56qb/+eqm//noov/56KH/+OSb//jgkP/33oz/+d6L//jZhP/11YH/
+8st5/+3CcP/nuWj/5LFg/9+mW//bnlT/1pZN/9KLRP/QhED/wG4s/3NRQf9xe4f/b3mF/2Nqd/5HT13g
+AgIFKwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAANYGNkeuLlqX/m5+n/+vr6v/p6en/6urq/+vq6//p6er/
+6+rr/97e3//c3N3/6+vs/+rr7P/u7u//5efq/9nIoP/655f/+eii//rnof/55aL/+OWf//finP/34Jf/
+9NuU//TWj//x0Ij/8MuC/+3GfP/qwXb/57ht/+WzZ//hql7/3qJZ/9uaUP/WkEf/0YhA/8t5MP7DeC39
+bjYS8h0jJrsNEhiZAAEEfQAAAE4AAAAUAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAjdX+F25CYqP+TmKH/
+5+Xl/+np6f/r6+v/7Ovr/+zs7f/v7/D/7+7u/+zr7P/n5eX/29vd/8/P0P+2srH/58qG//rjmP/44Zz/
++OCc//fgnP/335v/9d2Y//TYk//z14//8dCJ//DLg//uxnz/6752/+i3bf/lsmP/4alU/t2dTf3ZoEb8
+zZY8+syLM/nCiDP2u38u87Z5LfFyOxXeAAAAWQAAAC4AAAAjAAAAFQAAAAgAAAACAAAAAAAAAAAAAAAA
+AAAAAAAAABVmbnPKlJyq/4GHkv/h4eH/6+rq/+Dg4P/W1tf/yMjJ/7O0t/+mqaz/jpKX/4CEjP92fIT/
+ZW97/4t8av/314z/+N2V//fclf/33JX/9tuU//bZkf/11Iv/9NCI//LMgf/vyHL+7cRt/urAbP3ns2L8
+5LNb+t2rUPnYpkr31qND9s2bPvTGlDbywosz8cKHMe/AhjDvv38v7pVTIOwRAgFYAAAADQAAAAkAAAAF
+AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlBYWrWWoK7/eoCN/4qNlf+Okpj/fIGJ/3N6g/9yd4P/
+bnaC/3N7h/95gY7/f4iW/4SNnP98hJX/zKx6//fWhv/20of/9tKH//XRhv/y0YD+8dB9/u/Ofv3vy3X8
+7cRz++zGbvrpw2X55bhh+OC5W/ferlT23atO9dyrSvXapkP22J8799SWOPjRjDT5xHwu+LduK/SkXiTr
+ezsX1xECAEoAAAAEAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJO0NInZijsf+Ah5b/
+eoKR/32Glf+EjJv/hpCe/4aQn/+DjJr/en6J/WduffRSXGXmPkVP1FRIQNvsyXj+7sx4/O3Oevzsz3z8
+68h+++zHffvtyHX67ch0+u/Icvrvy3H578hu+vDGavrtumP86bRa/eCiTP3WlTv7vHsv9aVnJuuLTR7c
+bzQVyVQgDrM6DgeXIwUDgBEBAWEEAAA9AAAAFwAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAUtLjKHnqax/36Gk/9zfYX7Xmly7U1UXN02O0fHJSgssA8SFZUAAAF+AAAAaAAAAFgAAABY
+gmY7wfLSev7pyHT67Mh3+u/Kffvy1H7889R//fPQf//wyXr/5bts/9CiUvu9h0D0nGst5oNQHtVnNhXA
+RhoLpzAOBo8ZAQB0BwAAXwAAAEwAAAA8AAAAMgAAACkAAAAiAAAAGwAAABEAAAAIAAAAAgAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAEEXGyKUCAkLigAAAHIAAABeAAAATAAAAD0AAAA0
+AAAAKgAAACQAAAAgAAAAIhYQBFfVvXjx9daF/+3Kfv/lwXn/061h+7OGSu+bcTjjfk4hzlsyEbc/GAme
+IQUDgw4AAG0BAABXAAAARgAAADgAAAAvAAAAJwAAACEAAAAdAAAAGQAAABUAAAASAAAADgAAAAwAAAAI
+AAAABQAAAAIAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAEQAAACEAAAAk
+AAAAIAAAABsAAAAWAAAAEQAAAA4AAAALAAAACAAAAAkAAAAPMRoIYptxOuN3TyLJUTERrjIQBZUcAgF9
+CQAAZAAAAFEAAABBAAAANQAAACwAAAAlAAAAIAAAABwAAAAYAAAAFAAAABEAAAAOAAAACwAAAAkAAAAG
+AAAABQAAAAMAAAACAAAAAgAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAEAAAABwAAAAgAAAAGAAAABQAAAAMAAAACAAAAAQAAAAAAAAAAAAAAAwAAAA4AAAAj
+AAAAPwAAADwAAAAyAAAAKgAAACQAAAAfAAAAGwAAABcAAAATAAAAEAAAAA0AAAAKAAAACAAAAAYAAAAF
+AAAAAwAAAAIAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAACAAAABwAAAA8AAAAUAAAAFQAAABIAAAAPAAAADAAAAAkAAAAIAAAABQAAAAQAAAAD
+AAAAAgAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABQAAAAYAAAAGAAAABAAAAAMAAAAC
+AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAADAAAAAQAy
+AAABAQADAAAAAQAyAAABAgADAAAABAAAJ94BAwADAAAAAQABAAABBgADAAAAAQACAAABCgADAAAAAQAB
+AAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQAyAAABFwAEAAAAAQAA
+JxABHAADAAAAAQABAAABKAADAAAAAQACAAABUgADAAAAAQABAAABUwADAAAABAAAJ+aHcwAHAAAL9AAA
+J+4AAAAAAAgACAAIAAgAAQABAAEAAQAAC/RhcHBsAgAAAG1udHJSR0IgWFlaIAfZAAIAGQAJAB0AImFj
+c3BBUFBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAAANMtYXBwbAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADXJYWVoAAAEgAAAAFGdYWVoAAAE0AAAAFGJY
+WVoAAAFIAAAAFHd0cHQAAAFcAAAAFGNoYWQAAAFwAAAALHJUUkMAAAGcAAAADmdUUkMAAAGsAAAADmJU
+UkMAAAG8AAAADnZjZ3QAAAHMAAAGEm5kaW4AAAfgAAADDmRlc2MAAArwAAAAmWNwcnQAAAuMAAAAQG1t
+b2QAAAvMAAAAKFhZWiAAAAAAAABuLAAAOhUAAAJBWFlaIAAAAAAAAGG/AACzBAAAEQNYWVogAAAAAAAA
+JuoAABMBAAC/4FhZWiAAAAAAAADzUgABAAAAARbPc2YzMgAAAAAAAQxCAAAF3v//8yYAAAeSAAD9kf//
++6L///2jAAAD3AAAwGxjdXJ2AAAAAAAAAAECIQAAY3VydgAAAAAAAAABAiEAAGN1cnYAAAAAAAAAAQIh
+AAB2Y2d0AAAAAAAAAAAAAwEAAAIAAABEASgCWQMfBCUFBAX/Bu0H1AjNCbgKuwugDJcNig6ED30QcBFt
+EmMTZxRZFVkWTRdJGEMZQRo+GzYcNB0vHjIfKSApISIiIiMdJBwlGSYVJxMoDSkMKgcrCCwALP8t+y76
+L/Uw8THuMusz6jTlNeQ23zfeONk51zrSO9A8zj3LPso/x0DHQcRCxUPDRMRFwEbAR7xIuUm2SrNLsEyr
+TahOok+gUJpRllKPU4tUhVWAVntXdVhxWWpaZ1tgXF1dV15TX01gSGFDYj1jOGQxZSxmI2ceaBZpEGoI
+awJr/Gz1bfFu6m/mcOBx3XLZc9d01HXSdtJ30njTedV62XvefOR96371gACBDYIbgyyEPYVQhmSHeoiQ
+iaeKv4vZjPKODo8pkEaRY5KBk5+Uv5Xdlv2YHZk9ml2bfZyenb6e3p/9oR6iPKNbpHill6ayp86o56oC
+qxqsMq1Hrl2vb7CDsZKyorOutLy1xLbOt9O42LnZutu72LzTvcy+wb+2wKfBmsKHw3XEYcVMxjfHH8gJ
+yPDJ2Mq/y6XMjc1zzlrPQdAo0RDR+dLi08zUt9Wj1pHXgNhw2WLaV9tN3EfdQt5A30DgQOFA4kHjQuRE
+5UbmSOdL6E/pVOpZ61/sZu1v7njvg/CP8Zzyq/O79M314fb3+A/5KfpG+2X8iP2s/tX//wAAADYA7QIq
+AsgDmgR+BTYGDgbhB7IInAliCjsLFgvpDMwNnQ53D1UQKxEOEeQSwROgFHgVWhYyFxAX7xjJGasahRtk
+HEQdIB4DHt4fvSCcIXciWSM0JBQk8iXOJq8niihpKUgqJSsHK+Esvy2dLnovWzA1MRUx8jLQM7E0jDVs
+Nks3KTgKOOc5xzqlO4Q8ZD09Phs+8z/LQKRBeEJPQyVD+UTRRaVGe0dSSClJAkncSrdLlUxzTVVOOU8h
+UA1Q/VHwUudT4VTYVdJWylfDWLxZtlqwW6pcpV2fXpxfl2CVYZJikGOPZI5ljmaPZ5FolGmYap1ro2yq
+bbJuu2/HcNNx4nLxdAN1F3Ysd0N4XHl1epF7rHzJfeV/A4AigUKCYoODhKWFx4bpiAyJMIpUi3iMnY3D
+jueQDZEykliTfZSjlciW7ZgSmTeaW5t+nKKdxJ7moAehKKJHo2ekg6Wipryn2KjwqgmrH6w1rUiuW69r
+sHyxh7KUs5q0orWktqe3primuaO6n7uavJS9jr6Gv3/AdsFvwmbDXsRWxU/GSMdCyD3JOMo1yzPMMs0z
+zjbPPNBE0U/SXNNt1ILVm9a519rY/toi20fca92R3rff3uEF4i3jV+SC5a7m3OgM6T7qceuo7OHuHu9d
+8KDx6PMy9IP12Pcz+Jb5/vtv/Ov+cP//AAAADAAzAHoA4QFqAhYCZgK4AxUDfwP2BGkEwgUkBY0F/wZ4
+BtYHOwenCBgIkAj3CWEJ0QpFCr8LKwucDBEMiw0FDXkN8Q5tDuwPaA/lEGYQ6hFuEfISeRMDE48UHBSr
+FT4V0xZpFwIXnxg+GOAZhRotGtgbhxw5HO8dqR5lHyQf5yCrIXIiPCMDI80kmSVkJjInAyfXKK4phypk
+K0MsJS0LLfQu4C/PMMIxtzKwM6s0qDWoNqk3rDiuObI6szu1PLU9sT6uP6lApUGcQpZDjUSFRXtGcUdn
+SFxJUkpGSz1MMU0oTh1PFFALUQJR+1LzU+5U6FXlVuJX4ljjWeZa7Fv0XP5eC18cYDBhRmJgY3pklGWv
+Zsln5Gj+ahlrNGxPbWtuhm+icL1x2nL1dBJ1LnZMd2h4hXmiesB73Hz6fhd/NoBTgXKCkIOuhMyF6ocJ
+iCeJRopki4OMoI2/jt2P+5EZkjeTVJRylY6Wq5fHmOSZ/5sanDCdR55Zn2ugeqGJopajo6StpbimwafM
+qNSp3qrnq/Ks/K4IrxWwI7EyskOzV7RstYW2oLfAuOK6Crs1vGm9or7jwCzBfsLgxE3FyMdLyM7KUMvT
+zVbO2dBd0eLTaNTw1nrYB9mY2yvcwt5f3//hpuNV5QvmyuiS6mfsTO5A8EnyavSp9w/5q/yb//8AAG5k
+aW4AAAAAAAADBgAAo8kAAFcxAABQGgAAnfMAACZPAAARkwAAUA0AAFQ5AAIrugAB3lcAAV30AAMAeAAC
+AAAABAAQACMAPwBiAI4AwQD9AUABjAHhAj0CowMQA4cEBgSOBR8FugZdBwoHvwh/CUcKGQr0C9kMxw2+
+Dr4PxxDZEfYTHhRQFY0W1BgmGYMa6hxbHdYfWyDqIoQkKSXaJ5YpXSsuLQgu7DDYMsw0yDbKONI63jzu
+PwBBFEMsRUhHaUmPS7pN6lAgUlxUn1bpWTtblV34YGRi22VcZ+pqhW0tb+VyrHWFeHB7b36EgbCE+ohi
+i+aPhJM5lwWa457Sos+m16rmrvqzDrcfuym/KMMfxx/LJs8100nXYdt935rjt+fT6+zwAPQO+BT8D///
+AAAABQAUAC4AUQB/ALcA+gFHAZ8CAgJwAukDbQP8BJcFPgXwBq8HeQhPCTIKIQscDCMNNg5VD4AQuBIB
+E10UyhZGF88ZYhr8HJseOR/SIWkjCiS1JmkoJyntK7stkS9vMVMzPjUuNyQ5HjsbPRs/HUEhQypFOEdM
+SWVLg02oT9NSBFQ8VnpYwFsOXWNfwWIoZJlnE2mZbCpux3FxdCh273nFfKx/pIKyhdqJGoxwj9uTWZbn
+moSeLKHdpZWpUK0MsMS0dbgcu7S/OcKyxjLJuM1D0NLUY9f024PfEOKX5hfpjez48Fbzovbc+gH9Dv//
+AAAAFwBcAMwBZgImAwcEBQUaBkEHdAivCe4LLwxvDbEO+BBLEacTBBRjFcMXIxiDGeQbSByxHiIfnyEt
+IsgkciYoJ+wpvCuXLXwvazFiM2E1ZTdtOXc7gT2KP49BkkOdRbBHy0nuTBlOTFCGUslVE1dlWb9cIV6L
+YPxjdmX4aIJrFW2wcFRzAXW3eHd7QX4VgPSD54bwigyNOZB3k8GXF5p1ndmhP6SlqAarYK6usey1Fbgl
+uxi958CQwy/F1ch/yy7N4NCU00nV/diu213eBuCp40Tl1eha6tLtOu+Q8dPz//YT+A356ful/T/+s///
+AABkZXNjAAAAAAAAABVDb2xvciBMQ0QgQ2FsaWJyYXRlZAAAAAAAAAAAFQBDAG8AbABvAHIAIABMAEMA
+RAAgAEMAYQBsAGkAYgByAGEAdABlAGQAAAAAFUNvbG9yIExDRCBDYWxpYnJhdGVkAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBs
+ZSBJbmMuLCAyMDA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbW1vZAAAAAAAAAYQAACcmQAA
+AADFgbgAAAAAAAAAAAAAAAAAAAAAANIrLC0uWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcElt
+YWdlUmVwoy0vMFpOU0ltYWdlUmVwWE5TT2JqZWN00issMjNXTlNBcnJheaIyMNIrLDU2Xk5TTXV0YWJs
+ZUFycmF5ozUyMNM4OQ86OzxXTlNXaGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAzSKyw+P1dOU0NvbG9y
+oj4w0issQUJXTlNJbWFnZaJBMAAIABEAGgAkACkAMgA3AEkATABRAFMAYgBoAHUAfACLAJIAnwCmAK4A
+sACyALQAuQC7AL0AxgDLANYA2ADaANwA4QDkAOYA6ADqAPEBCAEkASYBKDUONRM1HjUnNTo1PjVJNVI1
+VzVfNWI1ZzV2NXo1gTWJNZY1mzWdNZ81pDWsNa81tDW8AAAAAAAAAgEAAAAAAAAAQwAAAAAAAAAAAAAA
+AAAANb8
+</mutableData>
+        </image>
+    </resources>
+</document>
