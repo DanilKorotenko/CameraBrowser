@@ -298,13 +298,6 @@
     NSLog( @"deviceBrowser:\n%@\ndeviceDidChangeName: \n%@\n", browser, device );
 }
 
-//----------------------------------------------------------------------------------- deviceBrowser:deviceDidChangeSharingState:
-
-- (void)deviceBrowser:(ICDeviceBrowser*)browser deviceDidChangeSharingState:(ICDevice*)device;
-{
-    NSLog( @"deviceBrowser:\n%@\ndeviceDidChangeSharingState: \n%@\n", browser, device );
-}
-
 #pragma mark -
 #pragma mark ICDevice & ICCameraDevice delegate methods
 //------------------------------------------------------------------------------------------------------------- didRemoveDevice:
@@ -342,89 +335,80 @@
     NSLog( @"  error : %@\n", error );
 }
 
-//--------------------------------------------------------------------------------------------------------- deviceDidChangeName:
-
 - (void)deviceDidChangeName:(ICDevice*)device;
 {
     NSLog( @"deviceDidChangeName: \n%@\n", device );
 }
-
-//------------------------------------------------------------------------------------------------- deviceDidChangeSharingState:
-
-- (void)deviceDidChangeSharingState:(ICDevice*)device
-{
-    NSLog( @"deviceDidChangeSharingState: \n%@\n", device );
-}
-
-//------------------------------------------------------------------------------------------ device:didReceiveStatusInformation:
 
 - (void)device:(ICDevice*)device didReceiveStatusInformation:(NSDictionary*)status
 {
     NSLog( @"device: \n%@\ndidReceiveStatusInformation: \n%@\n", device, status );
 }
 
-//---------------------------------------------------------------------------------------------------- device:didEncounterError:
-
 - (void)device:(ICDevice*)device didEncounterError:(NSError*)error
 {
     NSLog( @"device: \n%@\ndidEncounterError: \n%@\n", device, error );
 
-    NSBeginAlertSheet(
-                  NULL,
-                  @"OK", 
-                  NULL, 
-                  NULL, 
-                      self.window, 
-                  NULL, 
-                  NULL, 
-                  NULL, 
-                  NULL, 
-                  [error localizedDescription],
-                  NULL
-              );
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = [error localizedDescription];
+
+    [alert beginSheetModalForWindow:self.window completionHandler:nil];
 }
-
-//----------------------------------------------------------------------------------------------------- cameraDevice:didAddItem:
-
-- (void)cameraDevice:(ICCameraDevice*)device didAddItem:(ICCameraItem*)item;
-{
-    NSLog( @"cameraDevice: \n%@\ndidAddItem: \n%@\n", device, item );
-}
-
-//-------------------------------------------------------------------------------------------------- cameraDevice:didRemoveItem:
-
-- (void)cameraDevice:(ICCameraDevice*)device didRemoveItem:(ICCameraItem*)item;
-{
-    NSLog( @"cameraDevice: \n%@\ndidRemoveItem: \n%@\n", device, item );
-}
-
-//--------------------------------------------------------------------------------------------- cameraDeviceDidChangeCapability:
 
 - (void)cameraDeviceDidChangeCapability:(ICCameraDevice*)device
 {
     NSLog( @"cameraDeviceDidChangeCapability: \n%@\n", device );
 }
 
-//------------------------------------------------------------------------------------- cameraDevice:didReceiveThumbnailForItem:
-
-- (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item
+- (void)cameraDevice:(nonnull ICCameraDevice *)camera didAddItems:(nonnull NSArray<ICCameraItem *> *)items
 {
-    NSLog( @"cameraDevice:didReceiveThumbnailForItem:\n" );
-    NSLog( @"  device: %@\n", device );
-    NSLog( @"  item:   %@\n", item );
+    NSLog( @"cameraDevice: \n%@\ndidAddItems: \n%@\n", camera, items );
 }
 
-//-------------------------------------------------------------------------------------- cameraDevice:didReceiveMetadataForItem:
-
-- (void)cameraDevice:(ICCameraDevice*)device didReceiveMetadataForItem:(ICCameraItem*)item
+- (void)cameraDevice:(nonnull ICCameraDevice *)camera didReceiveMetadata:(NSDictionary * _Nullable)metadata
+    forItem:(nonnull ICCameraItem *)item error:(NSError * _Nullable)error
 {
     NSLog( @"cameraDevice:didReceiveMetadataForItem:\n" );
-    NSLog( @"  device: %@\n", device );
+    NSLog( @"  device: %@\n", camera );
     NSLog( @"  item:   %@\n", item );
 }
 
-//------------------------------------------------------------------------------------------------------------------------------
+- (void)cameraDevice:(nonnull ICCameraDevice *)camera didReceivePTPEvent:(nonnull NSData *)eventData
+{
+
+}
+
+- (void)cameraDevice:(nonnull ICCameraDevice *)camera didReceiveThumbnail:(CGImageRef _Nullable)thumbnail
+    forItem:(nonnull ICCameraItem *)item error:(NSError * _Nullable)error
+{
+    NSLog( @"cameraDevice:didReceiveThumbnailForItem:\n" );
+    NSLog( @"  device: %@\n", camera );
+    NSLog( @"  item:   %@\n", item );
+}
+
+- (void)cameraDevice:(nonnull ICCameraDevice *)camera didRemoveItems:(nonnull NSArray<ICCameraItem *> *)items
+{
+    NSLog( @"cameraDevice: \n%@\ndidRemoveItems: \n%@\n", camera, items );
+}
+
+- (void)cameraDevice:(nonnull ICCameraDevice *)camera didRenameItems:(nonnull NSArray<ICCameraItem *> *)items
+{
+
+}
+
+- (void)cameraDeviceDidEnableAccessRestriction:(nonnull ICDevice *)device
+{
+
+}
+
+- (void)cameraDeviceDidRemoveAccessRestriction:(nonnull ICDevice *)device
+{
+
+}
+
+- (void)deviceDidBecomeReadyWithCompleteContentCatalog:(nonnull ICCameraDevice *)device
+{
+
+}
 
 @end
-
-//------------------------------------------------------------------------------------------------------------------------------

@@ -56,7 +56,5 @@
     ICDeviceBrowserDelegate,
     ICCameraDeviceDelegate,
     NSApplicationDelegate>
-{
-}
 
 @end
