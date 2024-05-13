@@ -16,6 +16,7 @@
 		DAE1B5C42BF21F6A0038F801 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAE1B5C32BF21F6A0038F801 /* InfoPlist.strings */; };
 		DAE1B5C72BF21F750038F801 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE1B5C62BF21F750038F801 /* MainMenu.xib */; };
 		DAE1B5CB2BF223680038F801 /* ICDevice+CameraBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */; };
+		DAE1B5CE2BF2245C0038F801 /* CGImageRefToNSImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1B5CD2BF2245C0038F801 /* CGImageRefToNSImageTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		DAE1B5C82BF21F750038F801 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
 		DAE1B5C92BF223680038F801 /* ICDevice+CameraBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ICDevice+CameraBrowser.h"; sourceTree = "<group>"; };
 		DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ICDevice+CameraBrowser.m"; sourceTree = "<group>"; };
+		DAE1B5CC2BF2245C0038F801 /* CGImageRefToNSImageTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGImageRefToNSImageTransformer.h; sourceTree = "<group>"; };
+		DAE1B5CD2BF2245C0038F801 /* CGImageRefToNSImageTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGImageRefToNSImageTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				DAE1B5C92BF223680038F801 /* ICDevice+CameraBrowser.h */,
 				DAE1B5CA2BF223680038F801 /* ICDevice+CameraBrowser.m */,
+				DAE1B5CC2BF2245C0038F801 /* CGImageRefToNSImageTransformer.h */,
+				DAE1B5CD2BF2245C0038F801 /* CGImageRefToNSImageTransformer.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				06FB083B0D9AF7470081CC27 /* AppController.m in Sources */,
 				06569B910DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m in Sources */,
 				DAE1B5CB2BF223680038F801 /* ICDevice+CameraBrowser.m in Sources */,
+				DAE1B5CE2BF2245C0038F801 /* CGImageRefToNSImageTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

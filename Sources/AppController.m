@@ -48,31 +48,8 @@
 //------------------------------------------------------------------------------------------------------------------------------
 
 #import "AppController.h"
+#import "CGImageRefToNSImageTransformer.h"
 
-//----------------------------------------------------------------------------------------------- CGImageRefToNSImageTransformer
-
-@interface CGImageRefToNSImageTransformer: NSValueTransformer {}
-@end
-
-@implementation CGImageRefToNSImageTransformer
-
-+ (Class)transformedValueClass { return [NSImage class]; }
-
-+ (BOOL)allowsReverseTransformation { return NO; }
-
-- (id)transformedValue:(id)item
-{
-    if ( item )
-    {
-        NSImage*  newImage  = nil;
-        newImage = [[[NSImage alloc] initWithCGImage:(CGImageRef)item size:NSZeroSize] autorelease];
-        return newImage;
-    }
-    return nil;
-}
-@end
-
-//---------------------------------------------------------------------------------------------------------------- AppController
 
 @implementation AppController
 
