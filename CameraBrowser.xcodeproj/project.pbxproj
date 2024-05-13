@@ -48,17 +48,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				06569B8F0DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.h */,
-				06569B900DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m */,
-				06FB08390D9AF7470081CC27 /* AppController.h */,
-				06FB083A0D9AF7470081CC27 /* AppController.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,21 +78,12 @@
 		29B97314FDCFA39411CA2CEA /* CameraBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				DAE1B5BC2BF21EA00038F801 /* Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CameraBrowser;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -124,6 +104,18 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAE1B5BC2BF21EA00038F801 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				06569B8F0DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.h */,
+				06569B900DE1F1CB00595F89 /* VerticallyCenteredTextFieldCell.m */,
+				06FB08390D9AF7470081CC27 /* AppController.h */,
+				06FB083A0D9AF7470081CC27 /* AppController.m */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
