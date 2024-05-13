@@ -55,6 +55,7 @@
 @interface AppController : NSObject <
     ICDeviceBrowserDelegate,
     ICCameraDeviceDelegate,
+    ICCameraDeviceDownloadDelegate,
     NSApplicationDelegate>
 
 @end

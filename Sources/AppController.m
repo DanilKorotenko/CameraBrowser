@@ -244,7 +244,7 @@
 {
     NSURL* file = [NSURL fileURLWithPath:@"IMG_0048.JPG" isDirectory:NO]; // Update this line of code with the URL to the file to be uploaded
 
-    [[self selectedCamera] requestUploadFile:file options:NULL uploadDelegate:self
+    [[self selectedCamera] requestUploadFile:file options:[NSDictionary dictionary] uploadDelegate:self
         didUploadSelector:@selector(didUploadFile:error:contextInfo:) contextInfo:NULL];
 }
 
