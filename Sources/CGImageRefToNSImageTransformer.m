@@ -19,8 +19,7 @@
 {
     if ( item )
     {
-        NSImage*  newImage  = nil;
-        newImage = [[[NSImage alloc] initWithCGImage:(CGImageRef)item size:NSZeroSize] autorelease];
+        NSImage *newImage = [[NSImage alloc] initWithCGImage:(CGImageRef)item size:NSZeroSize];
         return newImage;
     }
     return nil;

@@ -59,7 +59,7 @@
 
 + (void)initialize
 {
-    CGImageRefToNSImageTransformer *imageTransformer = [[[CGImageRefToNSImageTransformer alloc] init] autorelease];
+    CGImageRefToNSImageTransformer *imageTransformer = [[CGImageRefToNSImageTransformer alloc] init];
     [NSValueTransformer setValueTransformer:imageTransformer forName:@"CGImageRefToNSImage"];
 }
 
@@ -104,8 +104,8 @@
 
 - (void)applicationWillTerminate:(NSNotification*)notification
 {
-    [mDeviceBrowser release];
-    [mCameras release];
+    mDeviceBrowser = nil;
+    mCameras = nil;
 }
 
 //------------------------------------------------------------------------------ observeValueForKeyPath:ofObject:change:context:
